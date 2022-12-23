@@ -22,7 +22,7 @@ const app = Vue.createApp ({
                 if (!response.ok) throw new Error ("Usuario no encontrado")
                 const data = await response.json ()
                 console.log(data)
-                this.resultado = true
+                this.resultado = data
                 this.error = null
             } catch (error) {
                 this.error = error

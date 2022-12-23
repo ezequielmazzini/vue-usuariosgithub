@@ -35,16 +35,25 @@
 
             <!-- Result -->
             <div class="result" v-if="resultado">
-                <h2 class="result_name">Juan Nuñez</h2>
-                <img src="" alt="" class="result_avatar">
-                <p class="result_bio"></p>
+                
+                <!-- Para interpolar texto dentro de etiquetas: 
+                como en: {{ resultado.name }}, {{resultado.bio}} trae el resultado de la busqueda e interpola el texto
+                https://vuejs.org/guide/essentials/template-syntax.html#text-interpolation -->
+
+                <!-- Para convertir un ateributo HTLM en dinamico, como por ejemplo src, id, etc:
+                Se puede usar "v-bin:atributo", o directamente ":atributo" por ejemplo para el atributo src, se lo hace dinámico de esta manera v-bind:src="resultado.avatar_url", o de la forma corta :href="resultado.blog"
+                https://vuejs.org/guide/essentials/template-syntax.html#attribute-bindings -->
+
+                <h2 class="result_name">{{ resultado.name }}</h2>
+                <img v-bind:src="resultado.avatar_url" :alt="resultado.name" class="result_avatar">
+                <p class="result_bio">{{ resultado.bio }}</p>
                 <br>
-                <a href="" class="result_blog"></a>
+                <a :href="resultado.blog" target="_blank" class="result_blog"> {{ resultado.blog }}</a>
             </div>
             <p v-else>Listo para nueva búsqueda...</p>
 
             <!-- Error -->
-            <div class="result__error" v-if="error">Error encontrado</div>
+            <div class="result__error" v-if="error">{{ error }}</div>
 
         </article>
     </div>
