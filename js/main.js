@@ -9,6 +9,7 @@ const app = Vue.createApp ({
             busqueda : null,
             resultado : null,
             error : null,
+            favoritos : new Map(),
         };
     },
     // En methods creamos los metodos y funciones que usara nuestra app
@@ -29,7 +30,12 @@ const app = Vue.createApp ({
             } finally {
                 this.busqueda = null
             }
+        },
 
+        // Metodo para agregar usuarios a favoritos:
+        // agregar al Map una clave resultado.id, y el objeto resultado, para mas info sobre mapas ver: https://escuelavue.es/cursos/javascript-moderno/maps-javascript/
+        agregarFavoritos() {
+            this.favoritos.set(this.resultado.id, this.resultado)
         }
     }
 

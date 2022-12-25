@@ -40,10 +40,14 @@
                 como en: {{ resultado.name }}, {{resultado.bio}} trae el resultado de la busqueda e interpola el texto
                 https://vuejs.org/guide/essentials/template-syntax.html#text-interpolation -->
 
-                <!-- Para convertir un ateributo HTLM en dinamico, como por ejemplo src, id, etc:
+                <!-- Para convertir un atributo HTLM en dinamico, como por ejemplo src, id, etc:
                 Se puede usar "v-bin:atributo", o directamente ":atributo" por ejemplo para el atributo src, se lo hace dinámico de esta manera v-bind:src="resultado.avatar_url", o de la forma corta :href="resultado.blog"
                 https://vuejs.org/guide/essentials/template-syntax.html#attribute-bindings -->
 
+                <!-- Para lanzar una función cuando ocurre un evento podemos usar v-on, o la manera abreviasa @click.
+                En este ejercicio cuando se hace click sobre la etiqueta <a> lanza la funcion o metodo agregarFavoritos -->
+
+                <a href="#" class="result__toggle-favorite" @click="agregarFavoritos">Agregar a favoritos ⭐</a>
                 <h2 class="result_name">{{ resultado.name }}</h2>
                 <img v-bind:src="resultado.avatar_url" :alt="resultado.name" class="result_avatar">
                 <p class="result_bio">{{ resultado.bio }}</p>
