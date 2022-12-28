@@ -41,13 +41,19 @@
                 https://vuejs.org/guide/essentials/template-syntax.html#text-interpolation -->
 
                 <!-- Para convertir un atributo HTLM en dinamico, como por ejemplo src, id, etc:
-                Se puede usar "v-bin:atributo", o directamente ":atributo" por ejemplo para el atributo src, se lo hace dinámico de esta manera v-bind:src="resultado.avatar_url", o de la forma corta :href="resultado.blog"
+                Se puede usar "v-bin:atributo", o directamente ":atributo" por ejemplo para el atributo src, se lo hace dinámico de esta manera v-bind:src="resultado.avatar_url", o de la forma corta : (href="resultado.blog")
                 https://vuejs.org/guide/essentials/template-syntax.html#attribute-bindings -->
 
                 <!-- Para lanzar una función cuando ocurre un evento podemos usar v-on, o la manera abreviasa @click.
                 En este ejercicio cuando se hace click sobre la etiqueta <a> lanza la funcion o metodo agregarFavoritos -->
 
-                <a href="#" class="result__toggle-favorite" @click="agregarFavoritos">Agregar a favoritos ⭐</a>
+                <!-- Propiedades computadas: Utilizamos las propiedades computadas para hacer calculos y aplicar lógica compleja para mostrar u ocultar dintintos elementos del HTML, entonces en una función hacemos todos los calculos y devolvemos ture o false, entonces en conjunto con  v-if // v-else renderizamos o no los elementos html. Para lanzar las funciones que determinaran si algo se muestra o no utilizamos v-on (o su forma corta @click), en este ejemplo para lanzar las funciones agregarFavoritos o eliminarFavoritos segun corresponda https://vuejs.org/guide/essentials/computed.html https://escuelavue.es/cursos/curso-vue-3-desde-cero/vue-3-propiedades-computadas/
+                -->    
+
+                <a v-if="esFavorito" href="#" class="result__toggle-favorite" @click="eliminarFavoritos">Eliminar de favoritos ⭐</a>
+                
+                <a v-else href="#" class="result__toggle-favorite" @click="agregarFavoritos">Agregar a favoritos ⭐</a>
+                
                 <h2 class="result_name">{{ resultado.name }}</h2>
                 <img v-bind:src="resultado.avatar_url" :alt="resultado.name" class="result_avatar">
                 <p class="result_bio">{{ resultado.bio }}</p>

@@ -12,6 +12,15 @@ const app = Vue.createApp ({
             favoritos : new Map(),
         };
     },
+    // En computed creamos nuestras propiedades computadas
+    computed: {
+
+        // devuelve si ya existe en favoritos
+        esFavorito () {
+            return this.favoritos.has(this.resultado.id)
+        }
+    },
+
     // En methods creamos los metodos y funciones que usara nuestra app
     methods: {
         async doSearch () {
@@ -36,7 +45,12 @@ const app = Vue.createApp ({
         // agregar al Map una clave resultado.id, y el objeto resultado, para mas info sobre mapas ver: https://escuelavue.es/cursos/javascript-moderno/maps-javascript/
         agregarFavoritos() {
             this.favoritos.set(this.resultado.id, this.resultado)
-        }
+        },
+
+        // Metodo para eliminar de favoritos
+        eliminarFavoritos() {
+            this.favoritos.delete(this.resultado.id)
+        },
     }
 
 });
