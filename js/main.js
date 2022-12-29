@@ -15,9 +15,15 @@ const app = Vue.createApp ({
     // En computed creamos nuestras propiedades computadas
     computed: {
 
-        // devuelve si ya existe en favoritos
+        // Devuelve si ya existe en favoritos
         esFavorito () {
             return this.favoritos.has(this.resultado.id)
+        },
+
+        // Del mapa de favoritos formado por clave , valor devuelve sólo los valores
+        // https://www.youtube.com/watch?v=4hrQtbaHVCQ
+        valoresFavoritos () {
+            return Array.from(this.favoritos.values())
         }
     },
 

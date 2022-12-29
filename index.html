@@ -16,15 +16,24 @@
 <body>
     <div id="app">
         <!-- Favorites -->
+
+        <!-- La directiva v-for sirve para recorrer los elementos de una lista, o de un elemento iterable para poder motrar un conjunto de HTML por cada elemento de la lista, en este caso recorre el mapa "favoritos". Como "favoritos es un mapa formada por clave, valor, hubo que hacer una propiedad computada llamada "valoresFavoritos" (minuto 4 del video de escuela vue) que devuelve sólo el valor del item.
+        video: https://escuelavue.es/cursos/curso-vue-3-desde-cero/v-for-vue-3-buscle-listas/ , documentación vue: https://vuejs.org/guide/essentials/list.html#v-for -->
+
         <div class="favorites">
+            <div class="favorite" v-for="favorito in valoresFavoritos">
+                <a :href="favorito.blog" target="_blanck"></a>
+                <img :src="favorito.avatar_url" :alt="favorito.name" class="favorite__avatar">
+            </div>
         </div>
 
         <!-- Content -->
         <article class="content">
             <h1 class="content__title">{{ mensage }}</h1>
 
-            <!-- Search 
-            La directiva: v-on:submit.prevent="doSearch" 
+            <!-- Search --> 
+
+            <!-- La directiva: v-on:submit.prevent="doSearch" 
             hace que cuando reconoce un evento submit en el formulario, realiza un prevent para que no recargue la pagina, y llama a la funcion "doSearch()"
             mas info en https://escuelavue.es/cursos/curso-vue-3-desde-cero/metodos-eventos-vue-3/
             -->
@@ -54,11 +63,11 @@
                 
                 <a v-else href="#" class="result__toggle-favorite" @click="agregarFavoritos">Agregar a favoritos ⭐</a>
                 
-                <h2 class="result_name">{{ resultado.name }}</h2>
-                <img v-bind:src="resultado.avatar_url" :alt="resultado.name" class="result_avatar">
-                <p class="result_bio">{{ resultado.bio }}</p>
+                <h2 class="result__name">{{ resultado.name }}</h2>
+                <img v-bind:src="resultado.avatar_url" :alt="resultado.name" class="result__avatar">
+                <p class="result__bio">{{ resultado.bio }}</p>
                 <br>
-                <a :href="resultado.blog" target="_blank" class="result_blog"> {{ resultado.blog }}</a>
+                <a :href="resultado.blog" target="_blank" class="result__blog"> {{ resultado.blog }}</a>
             </div>
             <p v-else>Listo para nueva búsqueda...</p>
 
