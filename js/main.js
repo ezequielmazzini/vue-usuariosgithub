@@ -12,6 +12,23 @@ const app = Vue.createApp ({
             favoritos : new Map(),
         };
     },
+
+    /* Created es un metodo que se ejecuta cuando se crea la instancia de vue, lo vamos a utilizar para recuperar los favoritos guardados en localStorage y luego mostrarlos
+    
+    - escuela vue: https://escuelavue.es/cursos/curso-vue-3-desde-cero/ciclo-vida-vue-3/
+    - ciclo de vida vue: https://vuejs.org/guide/essentials/lifecycle.html
+    - JSON.parse: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse  */
+    created() {
+        const guardadosFavoritos = JSON.parse(window.localStorage.getItem('favoritos'))
+        console.log(guardadosFavoritos)
+
+        //Comprueba que haya favoritos guardados y los carga en el mapa de favoritos
+        if (guardadosFavoritos.length) {
+            const favoritos = new Map (guardadosFavoritos.map(favoritos => [favoritos.id, favoritos]))
+            this.favoritos = favoritos
+        }
+    },
+
     // En computed creamos nuestras propiedades computadas
     computed: {
 
@@ -51,12 +68,22 @@ const app = Vue.createApp ({
         // agregar al Map una clave resultado.id, y el objeto resultado, para mas info sobre mapas ver: https://escuelavue.es/cursos/javascript-moderno/maps-javascript/
         agregarFavoritos() {
             this.favoritos.set(this.resultado.id, this.resultado)
+            this.guardarLocal()
         },
 
         // Metodo para eliminar de favoritos
         eliminarFavoritos() {
             this.favoritos.delete(this.resultado.id)
+            this.guardarLocal()
         },
+
+        /* Persistencia: Este método guarda en el almacenamiento local del navegador los favoritos para que sobrevivan a la regarga de pagina o al cerrar el navegador.
+        - escuela vue: https://escuelavue.es/cursos/curso-vue-3-desde-cero/vue-local-storage/  
+        - window.localStorage: https://developer.mozilla.org/es/docs/Web/API/Window/localStorage
+        - JSON.stringify: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify  */
+        guardarLocal () {
+            window.localStorage.setItem ('favoritos', JSON.stringify(this.valoresFavoritos))
+        }
     }
 
 });
