@@ -22,8 +22,10 @@ const app = Vue.createApp ({
         const guardadosFavoritos = JSON.parse(window.localStorage.getItem('favoritos'))
         console.log(guardadosFavoritos)
 
-        //Comprueba que haya favoritos guardados y los carga en el mapa de favoritos
-        if (guardadosFavoritos.length) {
+        /* Comprueba que haya favoritos guardados y los carga en el mapa de favoritos 
+        El operador ?. comprueba la existencia, entonces en este ejemplo se compueba la existencia y también que la longitus sea distinta de 0.
+        documentación : https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Optional_chaining */
+        if (guardadosFavoritos?.length) {
             const favoritos = new Map (guardadosFavoritos.map(favoritos => [favoritos.id, favoritos]))
             this.favoritos = favoritos
         }
