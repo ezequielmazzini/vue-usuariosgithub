@@ -77,6 +77,13 @@ const app = Vue.createApp ({
             this.guardarLocal()
         },
 
+    
+        /* Metodo para mostar en el cuadro de busqueda el favorito al que se le hace click.
+        Este metodo carga en la variable "resultado" el favorito al que se le hio click. En resultado normalmente tenemos los resultados de la búsqueda*/
+        mostrarFavorito(favoritos) {
+            this.resultado = favoritos
+        },
+
         /* Persistencia: Este método guarda en el almacenamiento local del navegador los favoritos para que sobrevivan a la regarga de pagina o al cerrar el navegador.
         - escuela vue: https://escuelavue.es/cursos/curso-vue-3-desde-cero/vue-local-storage/  
         - window.localStorage: https://developer.mozilla.org/es/docs/Web/API/Window/localStorage

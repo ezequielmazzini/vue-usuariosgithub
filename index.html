@@ -19,11 +19,15 @@
 
         <!-- La directiva v-for sirve para recorrer los elementos de una lista, o de un elemento iterable para poder motrar un conjunto de HTML por cada elemento de la lista, en este caso recorre el mapa "favoritos". Como "favoritos es un mapa formada por clave, valor, hubo que hacer una propiedad computada llamada "valoresFavoritos" (minuto 4 del video de escuela vue) que devuelve sólo el valor del item.
         video: https://escuelavue.es/cursos/curso-vue-3-desde-cero/v-for-vue-3-buscle-listas/ , documentación vue: https://vuejs.org/guide/essentials/list.html#v-for -->
-
+        
+        <!-- mostrarFavorito(favorito) al detectar el evento @click envía el favorito del v-for al metodo "mostrarFavorito", este metodo carga el favorito en resultado para que se muestre en el cuadro de búsqueda
+        escuelavue: https://escuelavue.es/cursos/curso-vue-3-desde-cero/v-on-eventos-vue-3-mostrar-favoritos/
+        -->
         <div class="favorites">
             <div class="favorite" v-for="favorito in valoresFavoritos">
-                <a :href="favorito.blog" target="_blanck"></a>
-                <img :src="favorito.avatar_url" :alt="favorito.name" class="favorite__avatar">
+                <a @click.prevent="mostrarFavorito(favorito)" href="#" target="_blanck">
+                    <img :src="favorito.avatar_url" :alt="favorito.name" class="favorite__avatar">
+                </a>
             </div>
         </div>
 
