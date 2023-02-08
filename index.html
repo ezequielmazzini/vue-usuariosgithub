@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub search</title>
+    <title>GitHub: buscador de usuarios</title>
     <link rel="stylesheet" href="css/main.css">
     
     <!-- Archivo de vue js-->
@@ -24,13 +24,13 @@
         escuelavue: https://escuelavue.es/cursos/curso-vue-3-desde-cero/v-on-eventos-vue-3-mostrar-favoritos/
         -->
 
-        <!-- Trnasition-group es una etiqueta de vue para animar listas y grupos de objetos con v-for, es importante que tengan la directiva " :key="favoritos.id" "
-        Escuelavue: https://escuelavue.es/cursos/curso-vue-3-desde-cero/transiciones-vue-3/
+        <!-- Trnasition-group es una etiqueta de vue para animar listas y grupos de objetos con v-for, es importante que tengan la directiva " :key="favorito.id" "", mas adelante cambiada a "favorito.login"
+        escuela vue: https://escuelavue.es/cursos/curso-vue-3-desde-cero/transiciones-vue-3/
         Documentación: https://vuejs.org/guide/built-ins/transition-group.html  -->
         
         <div class="favorites">
             <transition-group name="list">
-                <div class="favorite" v-for="favorito in valoresFavoritos" :key="favorito.id">
+                <div class="favorite" v-for="favorito in valoresFavoritos" :key="favorito.login">
                     <a @click.prevent="mostrarFavorito(favorito)" href="#" target="_blanck">
                         <img :src="favorito.avatar_url" :alt="favorito.name" class="favorite__avatar">
                     </a>
