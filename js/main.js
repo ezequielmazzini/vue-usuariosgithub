@@ -1,7 +1,6 @@
 const API = "https://api.github.com/users/";
 
 // constante donde defino el tiempo maximo en milisegundos que puedo tener un favorito sin actualizarlo
-
 const tiempoMaximoFavoritoMs = 10000 // son 10000 ms = 10 segundos
 
 // Creo instancia de vue
@@ -126,13 +125,18 @@ const app = Vue.createApp ({
             this.resultado = favoritos
         },
 
+        /* El método checkFavorito revisa si un favorito ya esta en favoritos y le cambia la clase de manera dinamica */
+        checkFavorito(login) {
+            return this.resultado?.login === login
+        },
+
         /* Persistencia: Este método guarda en el almacenamiento local del navegador los favoritos para que sobrevivan a la regarga de pagina o al cerrar el navegador.
         - escuela vue: https://escuelavue.es/cursos/curso-vue-3-desde-cero/vue-local-storage/  
         - window.localStorage: https://developer.mozilla.org/es/docs/Web/API/Window/localStorage
         - JSON.stringify: https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify  */
         guardarLocal () {
             window.localStorage.setItem ('favoritos', JSON.stringify(this.valoresFavoritos))
-        }
+        },
     }
 
 });
